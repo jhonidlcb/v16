@@ -1,0 +1,275 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Colores profesionales y modernos con mejor contraste */
+  --background: hsl(0, 0%, 100%);
+  --foreground: hsl(210, 12%, 16%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(210, 12%, 16%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(210, 12%, 16%);
+
+  /* Primary: azul corporativo con mejor contraste */
+  --primary: hsl(210, 85%, 24%);
+  --primary-foreground: hsl(0, 0%, 100%);
+
+  /* Secondary: gris neutro mejorado */
+  --secondary: hsl(210, 15%, 95%);
+  --secondary-foreground: hsl(210, 12%, 16%);
+
+  /* Muted: tonos con mejor legibilidad */
+  --muted: hsl(210, 15%, 95%);
+  --muted-foreground: hsl(210, 8%, 40%);
+
+  /* Accent: azul profesional con contraste */
+  --accent: hsl(210, 85%, 24%);
+  --accent-foreground: hsl(0, 0%, 100%);
+
+  --destructive: hsl(0, 72%, 51%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+
+  /* Borders más definidos */
+  --border: hsl(210, 20%, 88%);
+  --input: hsl(210, 20%, 88%);
+  --ring: hsl(210, 85%, 24%);
+
+  /* Charts con colores corporativos */
+  --chart-1: hsl(210, 85%, 24%);
+  --chart-2: hsl(142, 45%, 38%);
+  --chart-3: hsl(6, 58%, 52%);
+  --chart-4: hsl(25, 70%, 50%);
+  --chart-5: hsl(252, 45%, 58%);
+
+  --radius: 0.75rem;
+
+  /* Tipografía moderna con Poppins */
+  --font-sans: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --font-heading: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+}
+
+.dark {
+  --background: hsl(210, 15%, 6%);
+  --foreground: hsl(210, 15%, 98%);
+  --card: hsl(210, 15%, 8%);
+  --card-foreground: hsl(210, 15%, 98%);
+  --popover: hsl(210, 15%, 8%);
+  --popover-foreground: hsl(210, 15%, 98%);
+  --primary: hsl(210, 85%, 45%);
+  --primary-foreground: hsl(0, 0%, 100%);
+  --secondary: hsl(210, 15%, 15%);
+  --secondary-foreground: hsl(210, 15%, 98%);
+  --muted: hsl(210, 15%, 15%);
+  --muted-foreground: hsl(210, 12%, 70%);
+  --accent: hsl(210, 85%, 45%);
+  --accent-foreground: hsl(0, 0%, 100%);
+  --destructive: hsl(0, 72%, 51%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --border: hsl(210, 15%, 20%);
+  --input: hsl(210, 15%, 20%);
+  --ring: hsl(210, 85%, 45%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    overflow-x: hidden;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  /* Prevenir overflow horizontal en todos los elementos */
+  html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  /* Mobile-specific improvements */
+  @media (max-width: 640px) {
+    .tab-list {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .tab-trigger {
+      min-width: fit-content;
+      flex-shrink: 0;
+    }
+    
+    /* Prevenir overflow solo en imágenes para mantener responsive */
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+}
+
+/* Animaciones más suaves */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { 
+    transform: translateY(24px); 
+    opacity: 0; 
+  }
+  to { 
+    transform: translateY(0); 
+    opacity: 1; 
+  }
+}
+
+@keyframes bounceGentle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+.animate-slide-in {
+  animation: slideIn 0.8s ease-out;
+}
+
+.animate-bounce-gentle {
+  animation: bounceGentle 2.5s ease-in-out infinite;
+}
+
+/* Gradiente hero profesional mejorado */
+.gradient-bg {
+  background: linear-gradient(135deg, hsl(210, 85%, 24%) 0%, hsl(210, 75%, 30%) 50%, hsl(210, 85%, 20%) 100%);
+  position: relative;
+}
+
+.gradient-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+  pointer-events: none;
+}
+
+/* Efecto glass mejorado */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+}
+
+/* Slider de imágenes */
+.slider-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.slider-image {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  filter: brightness(0.8) contrast(1.1);
+  transition: all 0.3s ease;
+}
+
+.slider-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0,0,0,0.7));
+  padding: 2rem;
+  color: white;
+}
+
+.slider-controls {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.slider-controls:hover {
+  background: rgba(255, 255, 255, 1);
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* Efectos hover mejorados */
+.hover-lift {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Smooth scrolling mejorado */
+html {
+  scroll-behavior: smooth;
+  font-feature-settings: "kern" 1;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scrollbar personalizado elegante */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--muted);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 4px;
+  border: 2px solid var(--background);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(215, 25%, 32%);
+}
+
+/* Mejoras en la accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus indicators mejorados */
+*:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+  border-radius: var(--radius);
+}
